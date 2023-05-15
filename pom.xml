@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>firebase-demo</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>2023.05.15-01</version>
 	<name>firebase-demo</name>
 	<description>Spring Boot Firebase Demo</description>
 	<properties>
@@ -31,6 +31,18 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<!--Firebase-->
+		<dependency>
+			<groupId>com.google.firebase</groupId>
+			<artifactId>firebase-admin</artifactId>
+			<version>9.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.firebase</groupId>
+			<artifactId>firebase-database</artifactId>
+			<version>20.2.1</version>
 		</dependency>
 	</dependencies>
 
