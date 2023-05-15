@@ -2,14 +2,17 @@ package com.example.firebasedemo.service;
 
 import com.example.firebasedemo.model.User;
 import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.ExecutionException;
 
+@Slf4j
 @Service
 public class FirebaseService {
 
@@ -21,11 +24,12 @@ public class FirebaseService {
     }
 
     public void saveData(User user) throws ExecutionException, InterruptedException {
-        firestore.collection("users").document("test-user").set(user).get();
+        CollectionReference collectionReference = firestore.collection("users");
+        collectionReference.add(user).get();
     }
 
-    public User fetchUser() throws ExecutionException, InterruptedException {
-        DocumentReference documentReference = firestore.collection("users").document("test-user");
+    public User fetchUserById(String id) throws ExecutionException, InterruptedException {
+        DocumentReference documentReference = firestore.collection("users").document(id);
         ApiFuture<DocumentSnapshot> future = documentReference.get();
 
         DocumentSnapshot document = future.get();
